@@ -35,7 +35,7 @@ public class Economy {
                 if (windowSeatAvailable) {
                     int seatNumber = findWindowSeat();
                     if (seatNumber != 0)
-                        System.out.println("your seat number is " + seatNumber);
+                        System.out.println("your seat number is E" + seatNumber);
                     else
                         System.out.println("no window seats available in economy");
                 } else
@@ -45,7 +45,7 @@ public class Economy {
                 if (aisleSeatAvailable) {
                     int seatNumber = findAisleSeat();
                     if (seatNumber != 0)
-                        System.out.println("your seat number is " + seatNumber);
+                        System.out.println("your seat number is E" + seatNumber);
                     else
                         System.out.println("no aisle seats available in economy");
                 } else
@@ -55,7 +55,7 @@ public class Economy {
                 if (middleSeatAvailable) {
                     int seatNumber = findMiddleSeat();
                     if (seatNumber != 0)
-                        System.out.println("your seat number is " + seatNumber);
+                        System.out.println("your seat number is E" + seatNumber);
                     else
                         System.out.println("no middle seats available in economy");
                 } else
