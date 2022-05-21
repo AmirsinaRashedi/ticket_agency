@@ -35,7 +35,7 @@ public class BusinessClass {
                 if (windowSeatAvailable) {
                     int seatNumber = findWindowSeat();
                     if (seatNumber != 0)
-                        System.out.println("your seat number is " + seatNumber);
+                        System.out.println("your seat number is B" + seatNumber);
                     else
                         System.out.println("no window seats available in business class");
                 } else
@@ -45,7 +45,7 @@ public class BusinessClass {
                 if (aisleSeatAvailable) {
                     int seatNumber = findAisleSeat();
                     if (seatNumber != 0)
-                        System.out.println("your seat number is " + seatNumber);
+                        System.out.println("your seat number is B" + seatNumber);
                     else
                         System.out.println("no aisle seats available in business class");
                 } else
