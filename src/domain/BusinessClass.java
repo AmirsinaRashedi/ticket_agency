@@ -38,7 +38,8 @@ public class BusinessClass {
                         System.out.println("your seat number is " + seatNumber);
                     else
                         System.out.println("no window seats available in business class");
-                }
+                } else
+                    System.out.println("no window seats available in business class");
                 break;
             case 2:
                 if (aisleSeatAvailable) {
@@ -47,7 +48,8 @@ public class BusinessClass {
                         System.out.println("your seat number is " + seatNumber);
                     else
                         System.out.println("no aisle seats available in business class");
-                }
+                } else
+                    System.out.println("no aisle seats available in business class");
                 break;
             default:
                 System.out.println("invalid input");
