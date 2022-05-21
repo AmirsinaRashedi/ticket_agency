@@ -7,6 +7,9 @@ public class Economy {
     private boolean windowSeatAvailable;
     private boolean aisleSeatAvailable;
     private boolean middleSeatAvailable;
+    private int previousWindowSeat;
+    private int previousAisleSeat;
+    private int previousMiddleSeat;
 
     public Economy() {
         seats = new boolean[90];
@@ -14,6 +17,9 @@ public class Economy {
         windowSeatAvailable = true;
         aisleSeatAvailable = true;
         middleSeatAvailable = true;
+        previousWindowSeat = 0;
+        previousMiddleSeat = 1;
+        previousAisleSeat = 2;
     }
 
     public void findSeat() {
@@ -32,7 +38,8 @@ public class Economy {
                         System.out.println("your seat number is " + seatNumber);
                     else
                         System.out.println("no window seats available in economy");
-                }
+                } else
+                    System.out.println("no window seats available in economy");
                 break;
             case 2:
                 if (aisleSeatAvailable) {
@@ -41,7 +48,8 @@ public class Economy {
                         System.out.println("your seat number is " + seatNumber);
                     else
                         System.out.println("no aisle seats available in economy");
-                }
+                } else
+                    System.out.println("no aisle seats available in economy");
                 break;
             case 3:
                 if (middleSeatAvailable) {
@@ -50,7 +58,8 @@ public class Economy {
                         System.out.println("your seat number is " + seatNumber);
                     else
                         System.out.println("no middle seats available in economy");
-                }
+                } else
+                    System.out.println("no middle seats available in economy");
                 break;
             default:
                 System.out.println("invalid input");
@@ -58,9 +67,10 @@ public class Economy {
     }
 
     private int findMiddleSeat() {
-        for (int seat = 1; seat < 90; seat++) {
+        for (int seat = previousMiddleSeat; seat < 90; seat++) {
             if (seat % 6 == 1 || seat % 6 == 4) {
                 if (!seats[seat]) {
+                    previousMiddleSeat = seat;
                     seats[seat] = true;
                     return seat + 1;
                 }
@@ -71,9 +81,10 @@ public class Economy {
     }
 
     private int findAisleSeat() {
-        for (int seat = 2; seat < 90; seat++) {
+        for (int seat = previousAisleSeat; seat < 90; seat++) {
             if (seat % 6 == 2 || seat % 6 == 3) {
                 if (!seats[seat]) {
+                    previousAisleSeat = seat;
                     seats[seat] = true;
                     return seat + 1;
                 }
@@ -84,9 +95,10 @@ public class Economy {
     }
 
     private int findWindowSeat() {
-        for (int seat = 0; seat < 90; seat++) {
+        for (int seat = previousWindowSeat; seat < 90; seat++) {
             if (seat % 6 == 0 || seat % 6 == 5) {
                 if (!seats[seat]) {
+                    previousWindowSeat = seat;
                     seats[seat] = true;
                     return seat + 1;
                 }
