@@ -1,34 +1,55 @@
 package domain;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class BusinessClass {
-    private boolean[] seats;
-    private boolean aisleSeatAvailable;
-    private boolean windowSeatAvailable;
-    private int previousAisleSeat;
-    private int previousWindowSeat;
+public class BusinessClass extends PlaneSection {
 
     public BusinessClass() {
-        seats = new boolean[20];
-        initSeats();
-        aisleSeatAvailable = true;
-        windowSeatAvailable = true;
-        previousWindowSeat = 0;
-        previousAisleSeat = 1;
-    }
-
-    private void initSeats() {
-        for (int i = 0; i < 20; i++)
-            seats[i] = false;
+        super(20);
     }
 
     public void findSeat() {
+        if (seatsAvailable) {
+            try {
+                Scanner intInput = new Scanner(System.in);
+                boolean seatReserved;
+
+                System.out.print("enter the seat number you want to reserve: ");
+                int choice = intInput.nextInt();
+
+                if (choice > 0 && choice < 21) {
+
+                    seatReserved = reserveSeat(choice);
+
+                    if (!seatReserved) {
+                        System.out.println("the seat you chose is taken.please select the type of seat uou like.");
+                        findNextAvailableSeat();
+                    } else
+                        System.out.println("your seat number is B" + choice);
+
+                } else {
+                    System.out.println("the seat you chose dose not exist.please select the type of seat uou like");
+                    findNextAvailableSeat();
+                }
+
+
+            } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
+            }
+        } else
+            System.out.println("no seats available");
+
+    }
+
+    protected void findNextAvailableSeat() {
         System.out.println();
         System.out.println("1- window seat");
         System.out.println("2- aisle seat");
         System.out.print("choose: ");
+
         Scanner intInput = new Scanner(System.in);
+
         int choice = intInput.nextInt();
         switch (choice) {
             case 1:
