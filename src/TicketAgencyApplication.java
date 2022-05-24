@@ -1,5 +1,6 @@
 import util.ApplicationContext;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TicketAgencyApplication {
@@ -12,19 +13,24 @@ public class TicketAgencyApplication {
             System.out.println("3- exit");
             System.out.print("choose: ");
             Scanner intInput = new Scanner(System.in);
-            int choice = intInput.nextInt();
-            switch (choice) {
-                case 1:
-                    applicationContext.findSeat();
-                    break;
-                case 2:
-                    applicationContext.printSeats();
-                    break;
-                case 3:
-                    return;
-                default:
-                    System.out.println("invalid input");
+            try {
+                int choice = intInput.nextInt();
+                switch (choice) {
+                    case 1:
+                        applicationContext.findSeat();
+                        break;
+                    case 2:
+                        applicationContext.printSeats();
+                        break;
+                    case 3:
+                        return;
+                    default:
+                        System.out.println("invalid input");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
             }
+
         }
     }
 }
